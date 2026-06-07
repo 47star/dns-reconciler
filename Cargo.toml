@@ -1,0 +1,20 @@
+[package]
+name = "dns-reconciler"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+description = "Synchronize VyOS DHCP lease CSV state to Cloudflare DNS records"
+
+[workspace]
+members = ["."]
+resolver = "2"
+
+[dependencies]
+csv = "1"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+tokio = { version = "1", features = ["fs", "io-util", "macros", "net", "rt-multi-thread", "signal", "sync", "time"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt", "json"] }
